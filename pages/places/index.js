@@ -1,4 +1,4 @@
-import UserList from "../../components/Users/UserList";
+import PlaceList from "../../components/Places/PlaceList";
 import LoadingSpinner from "../../components/UIElements/LoadingSpinner";
 import { useState } from "react";
 
@@ -12,17 +12,18 @@ export default function index(props) {
           <LoadingSpinner />
         </div>
       )}
-      {!isLoading && <UserList items={props} />}
+      {!isLoading && <PlaceList items={props} />}
     </>
   );
 }
+
 export async function getStaticProps() {
 
-  const response = await fetch(`http://localhost:5000/api/users`);
-  const users = await response.json();
+  const response = await fetch(`http://localhost:5000/api/places`);
+  const places = await response.json();
   return {
     props: {
-      users,
+      places,
     },
   };
 }
