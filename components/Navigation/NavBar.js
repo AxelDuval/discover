@@ -14,6 +14,9 @@ export default function NavBar() {
     <Link href="/places">
     <li>Lieux</li> 
     </Link>
+    <Link href="/places/new_place">
+    <li>Créér un lieu</li> 
+    </Link>
     </>
     
   )}

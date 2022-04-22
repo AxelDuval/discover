@@ -11,7 +11,7 @@ export default function PlaceItem(props) {
       <div className="card space-y-6 xl:space-y-10">
         {/* <Avatar image={props.image} alt={props.name} className="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56"/> */}
         {/* <Image src={props.image} alt={props.title} layout="fill" /> */}
-        <img src={props.image} alt={props.name} className="mx-auto h-40 w-40 xl:w-56 xl:h-56" />
+        <img src={props.image} alt={props.title} className="mx-auto h-40 w-40 xl:w-56 xl:h-56" />
         <div className="mt-4 space-y-2 xl:flex xl:items-center xl:justify-center">
           <div className="space-y-1">
             <h3 className="text-white text-lg leading-6 font-medium">

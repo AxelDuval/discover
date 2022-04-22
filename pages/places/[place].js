@@ -1,10 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
+import PlaceDetail from "../../components/Places/PlaceDetail";
 
 export default function place(props) {
-  console.log(props);
-  return <div>OK</div>;
+    const [isLoading, setIsLoading] = useState(false);
+  return (
+    <>
+    {isLoading && (
+      <div className="center">
+        <LoadingSpinner />
+      </div>
+    )}
+    {!isLoading && <PlaceDetail items={props} />}
+  </>
+  )
 }
 
+// FONCTIONS QUI PERMETTENT UN RENDU DE PAGE STATIQUE
 export async function getStaticProps(context) {
   const id = context.params.place;
   const response = await fetch(`http://localhost:5000/api/places/${id}`);
