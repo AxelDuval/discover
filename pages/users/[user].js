@@ -11,7 +11,7 @@ export default function user(props) {
   );
 }
 
-// FONCTIONS QUI PERMETTENT UN RENDU DE PAGE STATIQUE // TROUVE LES LIEUX PAR LE USER ID
+// FONCTIONS QUI PERMETTENT UN RENDU DE PAGE STATIQUE // TROUVE LES LIEUX PAR L'ID UTILISATEUR
 export async function getStaticProps(context) {
   const id = context.params.user;
   const response = await fetch(`http://localhost:5000/api/places/users/${id}`);

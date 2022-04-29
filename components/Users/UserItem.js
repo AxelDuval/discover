@@ -13,13 +13,16 @@ export default function UserItem(props) {
           <div className="mt-4 space-y-2 xl:flex xl:items-center xl:justify-center">
             <div className="space-y-1">
               <h3 className="text-white text-lg leading-6 font-medium">{props.name} - {props.id}</h3>
-              <p className="text-indigo-400">
+              {props.placeCount !=0 && 
+              <Link href={`/users/${props.id}`}>
+              <p className="text-indigo-400 pt-2">
                 {props.placeCount}
                 {props.placeCount === 1 ? " lieu partagé" : " lieux partagés"}
               </p>
+              </Link>
+              }
             </div>
-          </div>
-          <Link href={`/users/${props.id}`}>Voir les lieux partagés'</Link>
+          </div>        
       </div>
     </li>
   )
