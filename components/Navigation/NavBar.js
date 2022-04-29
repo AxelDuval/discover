@@ -17,6 +17,12 @@ export default function NavBar() {
     <Link href="/places/new_place">
     <li>Créér un lieu</li> 
     </Link>
+    <Link href="/auth/signIn">
+    <li>S'inscrire</li> 
+    </Link>
+    <Link href="/auth/login">
+    <li>S'identifier</li> 
+    </Link>
     </>
     
   )}
