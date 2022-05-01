@@ -27,16 +27,16 @@ export async function getStaticProps(context) {
   };
 }
 
-export async function getStaticPaths() {
-  const response = await fetch("http://localhost:5000/api/places");
-  const places = await response.json();
+// export async function getStaticPaths() {
+//   const response = await fetch("http://localhost:5000/api/places");
+//   const places = await response.json();
 
-  // GOOD PATH
-  const paths = places.places.map((item) => ({
-    params: { place: item.id },
-  }));
-  return {
-    paths,
-    fallback: false,
-  };
-}
+//   // GOOD PATH
+//   const paths = places.places.map((item) => ({
+//     params: { place: item.id },
+//   }));
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// }

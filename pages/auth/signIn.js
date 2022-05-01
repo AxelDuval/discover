@@ -28,7 +28,6 @@ export default function SignIn() {
         }),
       });
 
-      console.log(response);
       const responseData = await response.json();
       if (!response.ok) {
         throw new Error(responseData.message);

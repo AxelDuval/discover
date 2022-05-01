@@ -2,7 +2,6 @@ import React from "react";
 import PlaceList from "../../components/Places/PlaceList";
 
 export default function user(props) {
-  console.log(props);
   return (
     <>
       <div>USER / places</div>

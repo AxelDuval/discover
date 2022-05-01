@@ -30,18 +30,13 @@ export default function Login() {
         }),
       });
 
-      console.log(response);
       const responseData = await response.json();
       if (!response.ok) {
-        console.log('erreur !')
         throw new Error(responseData.message);
       }
-      console.log('ok !')
       auth.login(responseData.userId, responseData.token);
-      console.log(responseData)
     } catch (err) {
       setError(err.message || "Une erreur s'est produite. Veuillez réessayer.");
-      console.log('erreur !')
     }
   };
 
