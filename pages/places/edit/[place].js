@@ -14,13 +14,13 @@ export default function UpdatePlace(props) {
 
   const token = auth.token;
   const access_token = `Bearer ${token}`;
-  const userId = auth.userId;
+  const placeId = props.place.place.id
 
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/places", {
-        method: "POST",
+      const response = await fetch(`http://localhost:5000/api/places/${placeId}`, {
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
           "Authorization": access_token
@@ -55,7 +55,7 @@ export default function UpdatePlace(props) {
           <label>Titre</label>
           <input
             ref={addInputs}
-            value={props}
+            defaultValue={props.place.place.title}
             id="title"
             name="title"
             htmlFor="title"
@@ -68,6 +68,7 @@ export default function UpdatePlace(props) {
           <label>Description</label>
           <textarea
             ref={addInputs}
+            defaultValue={props.place.place.description}
             id="description"
             name="description"
             htmlFor="description"
@@ -86,7 +87,7 @@ export default function UpdatePlace(props) {
 
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   const id = context.params.place;
   const res = await fetch(`http://localhost:5000/api/places/${id}`);
   const place = await res.json();
