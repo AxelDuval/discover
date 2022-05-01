@@ -14,22 +14,25 @@ export default function UpdatePlace(props) {
 
   const token = auth.token;
   const access_token = `Bearer ${token}`;
-  const placeId = props.place.place.id
+  const placeId = props.place.place.id;
 
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/api/places/${placeId}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": access_token
-        },
-        body: JSON.stringify({
-          title: inputs.current[0].value,
-          description: inputs.current[1].value,
-        }),
-      });
+      const response = await fetch(
+        `http://localhost:5000/api/places/${placeId}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: access_token,
+          },
+          body: JSON.stringify({
+            title: inputs.current[0].value,
+            description: inputs.current[1].value,
+          }),
+        }
+      );
 
       const responseData = await response.json();
       if (!response.ok) {
@@ -39,7 +42,6 @@ export default function UpdatePlace(props) {
       console.log(err);
     }
   }
-  console.log(props);
 
   return (
     <>
@@ -82,9 +84,7 @@ export default function UpdatePlace(props) {
         </button>
       </form>
     </>
-
   );
-
 }
 
 export async function getServerSideProps(context) {
@@ -93,4 +93,3 @@ export async function getServerSideProps(context) {
   const place = await res.json();
   return { props: { place } };
 }
-

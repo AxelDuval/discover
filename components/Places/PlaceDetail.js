@@ -8,25 +8,38 @@ import { AuthContext } from "../../context/auth-context";
 export default function PlaceDetail(props) {
   const auth = useContext(AuthContext);
   const placeId = props.items.place.place.id;
+  console.log(placeId)
   const token = auth.token;
   const access_token = `Bearer ${token}`;
 
-  async function deletePlaceHandler() {
+ 
+  const deletePlaceHandler = async(e) => {
+    e.preventDefault();
+    console.log('clic')
     try {
-      await fetch(`http://localhost:5000/api/places/${props.items.place.place.id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `http://localhost:5000/api/places/${placeId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: access_token,
+          },
+          body: null,
+        }
+      );
+      console.log(response);
 
-          Authorization: access_token,
-        },
-        body: null,
-      });
-      console.log("supprimé");
+      const responseData = await response.json();
+      if (!response.ok) {
+        throw new Error(responseData.message);
+      }
     } catch (err) {
       console.log(err);
     }
   }
+    
+
+
   return (
     <>
       <div
@@ -60,7 +73,7 @@ export default function PlaceDetail(props) {
             </span>
             <span className="mx-2 mt-2">
               <Button
-                onClick={deletePlaceHandler}
+                click={deletePlaceHandler}
                 size="xl"
                 textColor="white"
                 bgColor="bg-red-800"

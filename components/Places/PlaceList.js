@@ -19,6 +19,7 @@ export default function PlaceList(props) {
                 title={place.title}
                 address={place.address}
                 creator={place.creator}
+                onDelete={props.onDeletePlace}
               />
             ))}
           </ul>
