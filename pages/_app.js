@@ -3,7 +3,7 @@ import NavBar from "../components/Navigation/NavBar";
 import { AuthContext } from "../context/auth-context";
 import { useState, useCallback } from "react";
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+function MyApp({ Component, pageProps }) {
   const [token, setToken] = useState(false);
   const [userId, setUserId] = useState(false);
 

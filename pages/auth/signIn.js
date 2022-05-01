@@ -5,7 +5,6 @@ export default function SignIn() {
   const [error, setError] = useState();
   const formRef = useRef([]);
   
-
   const inputs = useRef([]);
 
   const addInputs = (el) => {
@@ -34,7 +33,7 @@ export default function SignIn() {
       if (!response.ok) {
         throw new Error(responseData.message);
       }
-      auth.login();
+      auth.login(responseData.userId, responseData.token);
     } catch (err) {
       setError(err.message || "Une erreur s'est produite. Veuillez réessayer.");
     }
