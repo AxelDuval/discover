@@ -1,8 +1,32 @@
 import Link from "next/link";
 import React from "react";
 import Button from "../UIElements/Button";
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth-context";
+
 
 export default function PlaceDetail(props) {
+  const auth = useContext(AuthContext);
+  const placeId = props.items.place.place.id;
+  const token = auth.token;
+  const access_token = `Bearer ${token}`;
+
+  async function deletePlaceHandler() {
+    try {
+      await fetch(`http://localhost:5000/api/places/${props.items.place.place.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+
+          Authorization: access_token,
+        },
+        body: null,
+      });
+      console.log("supprimé");
+    } catch (err) {
+      console.log(err);
+    }
+  }
   return (
     <>
       <div
@@ -29,11 +53,18 @@ export default function PlaceDetail(props) {
           <div>
             <span className="mx-2 mt-2">
               <Button size="xl" textColor="white" bgColor="bg-warning-700">
-              <Link href={`edit/${props.items.place.place.id}`}>Modifier</Link>
+                <Link href={`edit/${props.items.place.place.id}`}>
+                  Modifier
+                </Link>
               </Button>
             </span>
             <span className="mx-2 mt-2">
-              <Button size="xl" textColor="white" bgColor="bg-red-800">
+              <Button
+                onClick={deletePlaceHandler}
+                size="xl"
+                textColor="white"
+                bgColor="bg-red-800"
+              >
                 Supprimer
               </Button>
             </span>
