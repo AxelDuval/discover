@@ -14,7 +14,6 @@ export default function PlaceDetail(props) {
 
   const deletePlaceHandler = async (e) => {
     e.preventDefault();
-    console.log("clic");
     try {
       const response = await fetch(
         `http://localhost:5000/api/places/${placeId}`,
@@ -26,7 +25,6 @@ export default function PlaceDetail(props) {
           body: null,
         }
       );
-      console.log(response);
 
       const responseData = await response.json();
       if (!response.ok) {
@@ -60,6 +58,7 @@ export default function PlaceDetail(props) {
               </p>
             </div>
           </div>
+          {auth.userId === props.items.place.place.creator &&
           <div>
             <span className="mx-2 mt-2">
               <Button size="xl" textColor="white" bgColor="bg-warning-700">
@@ -79,8 +78,9 @@ export default function PlaceDetail(props) {
               </Button>
             </span>
           </div>
+          }
         </div>
-        <div className="h-20 w-full">
+        <div className="mt-5">
           <Map lat={location.lat} lng={location.lng}/>
         </div>
       </div>
