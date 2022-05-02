@@ -18,6 +18,7 @@ export default function PlaceList(props) {
                 image={place.image}
                 title={place.title}
                 address={place.address}
+                coordinates={place.location}
                 creator={place.creator}
                 onDelete={props.onDeletePlace}
               />

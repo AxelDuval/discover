@@ -3,19 +3,18 @@ import React from "react";
 import Button from "../UIElements/Button";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth-context";
-
+import Map from "../Map/Map";
 
 export default function PlaceDetail(props) {
   const auth = useContext(AuthContext);
   const placeId = props.items.place.place.id;
-  console.log(placeId)
+  const location = props.items.place.place.location;
   const token = auth.token;
   const access_token = `Bearer ${token}`;
 
- 
-  const deletePlaceHandler = async(e) => {
+  const deletePlaceHandler = async (e) => {
     e.preventDefault();
-    console.log('clic')
+    console.log("clic");
     try {
       const response = await fetch(
         `http://localhost:5000/api/places/${placeId}`,
@@ -36,9 +35,7 @@ export default function PlaceDetail(props) {
     } catch (err) {
       console.log(err);
     }
-  }
-    
-
+  };
 
   return (
     <>
@@ -82,6 +79,9 @@ export default function PlaceDetail(props) {
               </Button>
             </span>
           </div>
+        </div>
+        <div className="h-20 w-full">
+          <Map lat={location.lat} lng={location.lng}/>
         </div>
       </div>
     </>
