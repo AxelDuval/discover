@@ -51,8 +51,6 @@ export default function UpdatePlace(props) {
         onSubmit={handleSubmit}
         ref={formRef}
       >
-        {/* {isLoading && <LoadingSpinner />} */}
-
         <div className="mb-3 pt-4">
           <label>Titre</label>
           <input

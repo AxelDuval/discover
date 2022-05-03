@@ -30,6 +30,7 @@ export default function NewPlace() {
           title: inputs.current[0].value,
           description: inputs.current[1].value,
           address: inputs.current[2].value,
+          image: inputs.current[3].value,
           creator: userId
         }),
       });
@@ -54,8 +55,6 @@ export default function NewPlace() {
         onSubmit={handleSubmit}
         ref={formRef}
       >
-        {/* {isLoading && <LoadingSpinner />} */}
-
         <div className="mb-3 pt-4">
           <label>Titre</label>
           <input
@@ -88,6 +87,18 @@ export default function NewPlace() {
             name="address"
             htmlFor="address"
             type="text"
+            className="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
+          />
+        </div>
+
+        <div className="mb-3 pt-4">
+          <label>Lien de l'image</label>
+          <input
+            ref={addInputs}
+            id="image"
+            name="image"
+            htmlFor="image"
+            type="url"
             className="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
           />
         </div>
