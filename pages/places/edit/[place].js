@@ -1,7 +1,10 @@
 import { useRef, useContext } from "react";
+import Button from "../../../components/UIElements/Button";
 import { AuthContext } from "../../../context/auth-context";
+import { useRouter } from "next/router";
 
 export default function UpdatePlace(props) {
+  const router = useRouter();
   const auth = useContext(AuthContext);
   const formRef = useRef([]);
   const inputs = useRef([]);
@@ -41,18 +44,18 @@ export default function UpdatePlace(props) {
     } catch (err) {
       console.log(err);
     }
+    router.back();
   }
 
   return (
-    <>
-      <div>Modifier un lieu</div>
+    <div className="min-h-full mx-auto max-w-3xl items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <form
-        className=" my-10 p-5 bg-gray-200"
+        className=" my-10 p-5 bg-gray-700"
         onSubmit={handleSubmit}
         ref={formRef}
       >
         <div className="mb-3 pt-4">
-          <label>Titre</label>
+          <label className="text-white">Titre</label>
           <input
             ref={addInputs}
             defaultValue={props.place.place.title}
@@ -65,7 +68,7 @@ export default function UpdatePlace(props) {
         </div>
 
         <div className="mb-3 pt-4">
-          <label>Description</label>
+          <label className="text-white">Description</label>
           <textarea
             ref={addInputs}
             defaultValue={props.place.place.description}
@@ -76,12 +79,18 @@ export default function UpdatePlace(props) {
             className="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
           />
         </div>
-
-        <button type="submit" className="bg-gray-500 text-white">
-          Modifier le lieu
-        </button>
+        <div className="mt-8">
+          <Button
+            type="submit"
+            bgColor="bg-warning-700"
+            textColor="white"
+            size="sm"
+          >
+            Modifier le lieu
+          </Button>
+        </div>
       </form>
-    </>
+    </div>
   );
 }
 

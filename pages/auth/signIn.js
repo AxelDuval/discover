@@ -4,7 +4,7 @@ import React from "react";
 export default function SignIn() {
   const [error, setError] = useState();
   const formRef = useRef([]);
-  
+
   const inputs = useRef([]);
 
   const addInputs = (el) => {
@@ -43,12 +43,7 @@ export default function SignIn() {
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
-            {/* <img
-              className="mx-auto h-12 w-auto"
-              src="https://tailwindui.com/img/logos/workflow-mark-gray-600.svg"
-              alt="Workflow"
-            /> */}
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+            <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
               S'inscrire
             </h2>
           </div>

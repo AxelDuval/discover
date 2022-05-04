@@ -1,12 +1,13 @@
 import { useState, useRef, useContext } from "react";
 import React from "react";
-import { AuthContext } from "../../context/auth-context"
+import { AuthContext } from "../../context/auth-context";
+import { useRouter } from "next/router";
 
 export default function Login() {
   const [error, setError] = useState();
   const formRef = useRef([]);
   const auth = useContext(AuthContext);
-
+  const router = useRouter();
 
   const inputs = useRef([]);
 
@@ -35,6 +36,7 @@ export default function Login() {
         throw new Error(responseData.message);
       }
       auth.login(responseData.userId, responseData.token);
+      router.push("/");
     } catch (err) {
       setError(err.message || "Une erreur s'est produite. Veuillez réessayer.");
     }
@@ -45,12 +47,7 @@ export default function Login() {
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
-            {/* <img
-              className="mx-auto h-12 w-auto"
-              src="https://tailwindui.com/img/logos/workflow-mark-gray-600.svg"
-              alt="Workflow"
-            /> */}
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+            <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
               S'identifier
             </h2>
           </div>

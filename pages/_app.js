@@ -13,10 +13,11 @@ function MyApp({ Component, pageProps }) {
           token: token,
           userId: userId,
           login: login,
+          logout: logout,
         }}
       >
         <NavBar />
-        <div className="flex-1">
+        <div className="flex-1 bg-gray-900">
           <Component {...pageProps} />
         </div>
       </AuthContext.Provider>
