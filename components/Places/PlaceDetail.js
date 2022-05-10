@@ -4,8 +4,10 @@ import Button from "../UIElements/Button";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth-context";
 import Map from "../Map/Map";
+import { useRouter } from "next/router";
 
 export default function PlaceDetail(props) {
+  const router = useRouter();
   const auth = useContext(AuthContext);
   const placeId = props.items.place.place.id;
   const location = props.items.place.place.location;
@@ -33,6 +35,7 @@ export default function PlaceDetail(props) {
     } catch (err) {
       console.log(err);
     }
+    router.push("/places")
   };
 
   return (

@@ -1,9 +1,18 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import React from "react";
+import { useRouter } from "next/router";
+import { AuthContext } from "../../context/auth-context";
+
+
 
 export default function SignIn() {
   const [error, setError] = useState();
   const formRef = useRef([]);
+  const router = useRouter();
+  const auth = useContext(AuthContext);
+
+
+
 
   const inputs = useRef([]);
 
@@ -33,6 +42,7 @@ export default function SignIn() {
         throw new Error(responseData.message);
       }
       auth.login(responseData.userId, responseData.token);
+      router.push("/");
     } catch (err) {
       setError(err.message || "Une erreur s'est produite. Veuillez réessayer.");
     }
@@ -40,15 +50,15 @@ export default function SignIn() {
 
   return (
     <>
-      <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="h-screen flex items-center justify-center py-6 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
+            <h2 className="mt-2 text-center text-3xl font-extrabold text-white">
               S'inscrire
             </h2>
           </div>
           <form
-            className="mt-8 space-y-6"
+            className="mt-2 space-y-6"
             onSubmit={authSubmitHandler}
             ref={formRef}
           >
@@ -61,7 +71,7 @@ export default function SignIn() {
                   ref={addInputs}
                   id="name"
                   name="name"
-                  type="name"
+                  type="text"
                   required
                   className=" relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10 sm:text-sm"
                   placeholder="Nom d'utilisateur"

@@ -1,8 +1,10 @@
 import { useRef, useContext } from "react";
 import Button from "../../components/UIElements/Button";
 import { AuthContext } from "../../context/auth-context";
+import { useRouter } from "next/router";
 
 export default function NewPlace() {
+  const router = useRouter();
   const auth = useContext(AuthContext);
   console.log(auth);
   const formRef = useRef([]);
@@ -46,6 +48,7 @@ export default function NewPlace() {
     } catch (err) {
       console.log(err);
     }
+    router.push("/places");
   }
 
   return (
@@ -103,14 +106,14 @@ export default function NewPlace() {
           />
         </div>
         <div className="mt-10">
-        <Button
-          type="submit"
-          bgColor="bg-success-300"
-          textColor="black"
-          size="sm"
-        >
-          Ajouter un lieu
-        </Button>
+          <Button
+            type="submit"
+            bgColor="bg-success-300"
+            textColor="black"
+            size="sm"
+          >
+            Ajouter un lieu
+          </Button>
         </div>
       </form>
     </div>

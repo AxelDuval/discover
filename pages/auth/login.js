@@ -26,7 +26,7 @@ export default function Login() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: inputs.current[0].value,
+          email: inputs.current[0].value.toLowerCase(),
           password: inputs.current[1].value,
         }),
       });
@@ -44,15 +44,15 @@ export default function Login() {
 
   return (
     <>
-      <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="h-screen flex items-center justify-center py-6 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
+            <h2 className="mt-2 text-center text-3xl font-extrabold text-white">
               S'identifier
             </h2>
           </div>
           <form
-            className="mt-8 space-y-6"
+            className="mt-2 space-y-6"
             onSubmit={authSubmitHandler}
             ref={formRef}
           >

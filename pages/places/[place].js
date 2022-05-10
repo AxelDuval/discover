@@ -15,7 +15,6 @@ export default function place(props) {
   )
 }
 
-// FONCTIONS QUI PERMETTENT UN RENDU DE PAGE STATIQUE
 export async function getStaticProps(context) {
   const id = context.params.place;
   const response = await fetch(`http://localhost:5000/api/places/${id}`);
@@ -31,7 +30,6 @@ export async function getStaticPaths() {
   const response = await fetch("http://localhost:5000/api/places");
   const places = await response.json();
 
-  // GOOD PATH
   const paths = places.places.map((item) => ({
     params: { place: item.id },
   }));

@@ -28,8 +28,10 @@ export function useAuth() {
   const logout = useCallback(() => {
     setToken(null);
     setUserId(null);
-    // setTokenExpirationDate(null);
-    // localStorage.removeItem("userData");
+    setTokenExpirationDate(null);
+    useEffect(()=> {
+      localStorage.removeItem("userData");
+    },[])
   }, []);
 
   useEffect(() => {

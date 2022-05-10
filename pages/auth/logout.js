@@ -1,19 +1,18 @@
-import React from "react";
-import { useState, useRef, useContext } from "react";
+import { useContext } from "react";
 import { useRouter } from "next/router";
-
 
 import { AuthContext } from "../../context/auth-context";
 import { useEffect } from "react";
 
 export default function logoutUser() {
-    const router = useRouter();
-    const auth = useContext(AuthContext);
+  const router = useRouter();
+  const auth = useContext(AuthContext);
+  
+  auth.logout();
 
-    useEffect(()=>{
-        auth.logout();
-        router.push("/");
-    })
-
+  useEffect(() => {
+    router.push("/");
+  });
+  
 
 }

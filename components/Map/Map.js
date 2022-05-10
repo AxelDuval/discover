@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-import Script from "next/script";
 
 const containerStyle = {
   width: 'full',
