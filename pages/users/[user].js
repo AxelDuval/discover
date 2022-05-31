@@ -7,7 +7,7 @@ export default function user(props) {
 
 export async function getStaticProps(context) {
   const id = context.params.user;
-  const response = await fetch(`http://localhost:5000/api/places/users/${id}`);
+  const response = await fetch(`https://placesdiscover.herokuapp.com/api/places/users/${id}`);
   const places = await response.json();
   return {
     props: {
@@ -17,7 +17,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const response = await fetch("http://localhost:5000/api/users");
+  const response = await fetch("https://placesdiscover.herokuapp.com/api/users");
   const users = await response.json();
 
   const paths = users.users.map((item) => ({

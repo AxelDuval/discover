@@ -5,7 +5,7 @@ export default function index(props) {
 }
 
 export async function getStaticProps() {
-  const response = await fetch(`http://localhost:5000/api/places`);
+  const response = await fetch(`https://placesdiscover.herokuapp.com/api/places`);
   const places = await response.json();
   return {
     props: {

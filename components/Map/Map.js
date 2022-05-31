@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
@@ -22,7 +22,7 @@ center = {
    
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyD-SfTESDv8RUOrHQdjzFxmv6wOUnzRhrk"
+    googleMapsApiKey: process.env.GOOGLE_API_KEY
   })
 
   const [map, setMap] = React.useState(null)

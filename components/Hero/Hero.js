@@ -1,6 +1,7 @@
 import HeroImage from "../../public/images/02.jpg";
 import Button from "../UIElements/Button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -27,7 +28,7 @@ export default function Hero() {
           <div className="mt-10 flex justify-center">
             <div className="mt-2">
               <Button bgColor="bg-warning-500" textColor="white" size="xl">
-                <a href="/places"> Explorer</a>
+                <Link href="/places"> Explorer</Link>
               </Button>
             </div>
           </div>

@@ -1,23 +1,18 @@
-import React, {useState} from "react";
+import React from "react";
 import PlaceDetail from "../../components/Places/PlaceDetail";
 
 export default function place(props) {
-    const [isLoading, setIsLoading] = useState(false);
   return (
     <>
-    {isLoading && (
-      <div className="center">
-        <LoadingSpinner />
-      </div>
-    )}
-    {!isLoading && <PlaceDetail items={props} />}
+   
+    <PlaceDetail items={props} />
   </>
   )
 }
 
 export async function getStaticProps(context) {
   const id = context.params.place;
-  const response = await fetch(`http://localhost:5000/api/places/${id}`);
+  const response = await fetch(`https://placesdiscover.herokuapp.com/api/places/${id}`);
   const place = await response.json();
   return {
     props: {
@@ -27,7 +22,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const response = await fetch("http://localhost:5000/api/places");
+  const response = await fetch("https://placesdiscover.herokuapp.com/api/places");
   const places = await response.json();
 
   const paths = places.places.map((item) => ({

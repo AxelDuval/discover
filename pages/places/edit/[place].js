@@ -23,7 +23,7 @@ export default function UpdatePlace(props) {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:5000/api/places/${placeId}`,
+        `https://placesdiscover.herokuapp.com/api/places/${placeId}`,
         {
           method: "PATCH",
           headers: {
@@ -96,7 +96,7 @@ export default function UpdatePlace(props) {
 
 export async function getServerSideProps(context) {
   const id = context.params.place;
-  const res = await fetch(`http://localhost:5000/api/places/${id}`);
+  const res = await fetch(`https://placesdiscover.herokuapp.com/api/places/${id}`);
   const place = await res.json();
   return { props: { place } };
 }

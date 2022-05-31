@@ -25,7 +25,7 @@ export default function SignIn() {
   const authSubmitHandler = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/users/signup", {
+      const response = await fetch("https://placesdiscover.herokuapp.com/api/users/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
