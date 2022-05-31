@@ -1,9 +1,7 @@
 import PlaceItem from "./PlaceItem";
 
 export default function PlaceList(props) {
-  if (props.items.places.places.length === 0) {
-    return <div><h2>No places found.</h2></div>;
-  }
+ 
   return (
       <div className="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
         <div className="space-y-12">

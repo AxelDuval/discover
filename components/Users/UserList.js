@@ -1,13 +1,7 @@
 import UserItem from "./UserItem";
 
 export default function UsersList(props) {
-  if (props.items.users.users.length === 0) {
-    return (
-      <div>
-        <h2>Pas d'utilisateurs trouvés</h2>
-      </div>
-    );
-  }
+ 
   return (
     <div className="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
       <div className="space-y-12">
