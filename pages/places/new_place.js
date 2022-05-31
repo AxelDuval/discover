@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 export default function NewPlace() {
   const router = useRouter();
   const auth = useContext(AuthContext);
-  console.log(auth);
   const formRef = useRef([]);
   const inputs = useRef([]);
 
@@ -37,10 +36,8 @@ export default function NewPlace() {
           creator: userId,
         }),
       });
-      console.log(response);
 
       const responseData = await response.json();
-      console.log(responseData);
 
       if (!response.ok) {
         throw new Error(responseData.message);

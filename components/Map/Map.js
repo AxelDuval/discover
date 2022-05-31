@@ -14,7 +14,6 @@ let center = {
 export default function Map (props) {
 const lat = props.lat;
 const lng = props.lng;
-console.log(lat, lng)
 center = {
   lat,
   lng
