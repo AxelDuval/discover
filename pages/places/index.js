@@ -11,5 +11,6 @@ export async function getStaticProps() {
     props: {
       places,
     },
+    revalidate: 10,
   };
 }
