@@ -1,1 +1,1 @@
-A Next.js App to share places aroud the world !
+A Next.js App to share places around the world !

@@ -20,12 +20,14 @@ export default function UserItem(props) {
               {props.name}
             </h3>
             {props.placeCount != 0 && (
+              <button>
               <Link href={`/users/${props.id}`}>
-                <p className="text-gray-400 pt-2">
+                <p className="text-gray-400 pt-2 underline">
                   {props.placeCount}
                   {props.placeCount === 1 ? " lieu partagé" : " lieux partagés"}
                 </p>
               </Link>
+              </button>
             )}
           </div>
         </div>
